@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# evaluation the results, print values and plot graphs
+# Evaluating the results, print values and plot graphs
 #
 ###############################################################################
 
