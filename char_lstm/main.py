@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# training the network
+# Train the network
 #
 ###############################################################################
 
@@ -11,10 +11,10 @@ import torch
 import numpy as np
 import torch.nn as nn
 from torch.autograd import Variable
-import data
-import model
 import matplotlib.pyplot as plt
 
+import data
+import model
 
 parser = argparse.ArgumentParser(description='PyTorch PennTreeBank LSTM Language Model')
 parser.add_argument('--data', type=str, default='../datasets/penn/unknown',
@@ -48,9 +48,8 @@ parser.add_argument('--test_on_orig', action='store_true',
 
 args = parser.parse_args()
 
-## set to true if you wanna see plots during training
+## set to true if you want to see plots during training
 PLOTTING = False
-
 
 ##logging variables
 loss_train = []
@@ -92,9 +91,6 @@ if args.test_on_orig:
 
 ntokens = len(corpus.dictionary)
 print(ntokens, 'different symbols/tokens.')
-
-#worse for penntree unknow char
-#args.bptt = math.floor(args.bptt * ((corpus.train_avg_len + corpus.valid_avg_len + corpus.test_avg_len) / 3))
 
 print('Sequence length used for learning: ', args.bptt)
 
@@ -156,7 +152,6 @@ if args.resume_training: #resume training from checkpoint files
 
     with open('output/' + args.save + '.pt', 'rb') as f:
         model = torch.load(f)
-
 else:
     model = model.OurModel(ntokens, nhid=args.nhid)
 
@@ -361,11 +356,11 @@ test_learning_rates = [0, 0.01, 0.1, 1, 2, 5, 10]
 for _lr in test_learning_rates:
 
     # Load the best saved model.
-    # reload every time we test, so we do not 'train' on the test set (how can this be legal?)
+    # reload every time we test, so we do not 'train' on the test set 
     with open('output/' + args.save + '.pt', 'rb') as f:
         model = torch.load(f)
 
-    # Run on test data. Use dynamic evaluation
+    # Run on test data. Use dynamic evaluation (how can this be legal?)
     #test_loss = evaluate(test_data)
     lr = _lr
     test_loss = train(test_data)
