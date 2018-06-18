@@ -1,9 +1,8 @@
 ###############################################################################
 #
-# set up the model structure
+# Setthing up the model structure
 #
 ###############################################################################
-
 
 import torch.nn as nn
 from torch.autograd import Variable
@@ -13,10 +12,6 @@ class OurModel(nn.Module):
 
     def __init__(self, ntoken, nhid=1000):
         super(OurModel, self).__init__()
-        #ntoken - input dimension / output dimension
-        #self.encoder = nn.Embedding(ntoken, ntoken) # dirty hack so we don't need to change the input from the original code,
-                                                     # should also improve performance compared to one-hot-vectors
-                                                     # but also increases the number of parameters in the word model by 100.000.000 (ooops)
         self.rnn = nn.LSTM(ntoken, nhid, 1)
         self.decoder = nn.Linear(nhid, ntoken)
         self.ntoken = ntoken
@@ -26,13 +21,11 @@ class OurModel(nn.Module):
 
     def init_weights(self):
         initrange = 0.1
-        #self.encoder.weight.data.uniform_(-initrange, initrange)
         self.decoder.bias.data.fill_(0)
         self.decoder.weight.data.uniform_(-initrange, initrange)
 
     def forward(self, input, hidden):
-        #emb = self.encoder(input)
-        output, hidden = self.rnn(input, hidden) #input = emb
+        output, hidden = self.rnn(input, hidden)
         decoded = self.decoder(output.view(output.size(0)*output.size(1), output.size(2)))
         return decoded.view(output.size(0), output.size(1), decoded.size(1)), hidden
 
@@ -49,4 +42,3 @@ class OurModel(nn.Module):
             else:
                 num_param += parameter.size(0)
         return num_param
-
