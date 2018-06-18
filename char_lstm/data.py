@@ -61,8 +61,6 @@ class Corpus_word(object):
         return ids
 
 
-
-
 class Corpus_char(object):
     def __init__(self, path):
         self.dictionary = Dictionary()
@@ -105,7 +103,6 @@ class Corpus_char(object):
                     avg_len += len(word)
 
         return ids, (avg_len/tokens)+1 ##plus one for the space belonging to each single word
-
 
 
 class Corpus_subword(object):
