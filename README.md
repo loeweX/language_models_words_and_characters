@@ -3,7 +3,7 @@
 Collaborators: @[pascalesser](https://github.com/pascalesser) and @[basakeskili](https://github.com/basakeskili)
 
 ## Abstract
-Here, we compare recurrent neural networks for language modeling based on word-, subword- and character-level inputs. We employ a simple architecture consisting of 1,000 LSTM units on four different datasets, first the Penn Treebank and then the Harry Potter books in English, German and Turkish. Word-models have been shown to outperform character-based models in English. Nonetheless, we assumed that their advantage might not apply to languages with a richer morphology. However, our results disproved this assumption. Overall, the word-based model outperformed both the character- and subword-based model on all datasets, indicating that their relative performance does not depend on the characteristics of the language they are applied to but the characteristics of the model.
+We compare recurrent neural networks for language modeling based on word-, subword- and character-level inputs. We employ a simple architecture consisting of 1,000 LSTM units on four different datasets, first the Penn Treebank and then the Harry Potter books in English, German and Turkish. Word-models have been shown to outperform character-based models in English. Nonetheless, we assumed that their advantage might not apply to languages with a richer morphology. However, our results disproved this assumption. Overall, the word-based model outperformed both the character- and subword-based model on all datasets, indicating that their relative performance does not depend on the characteristics of the language they are applied to but the characteristics of the model.
 
 The full report is given as a pdf-file.
 
